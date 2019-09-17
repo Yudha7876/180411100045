@@ -159,7 +159,236 @@ Q_1 = (n + 1) {1\over 4}
 Q_2 = (n + 1) {1\over 2}
 \
 Q_3 = (n + 1) {3\over 4}
-$$</p></div>
+$$</p>
+<pre><code>#code
+from scipy import stats
+import numpy as np
+import seaborn as sns
+import matplotlib as plt
+import pandas as pd
+</code></pre>
+
+<pre><code>df = pd.read_csv('pd.csv')
+df
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>NOMOR ANTRIAN</th>
+<th>PENYAKIT JANTUNG</th>
+<th>PENYAKIT HATI</th>
+<th>PENYAKIT GINJAL</th>
+<th>PENYAKIT MATA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1001</td>
+<td>93</td>
+<td>73</td>
+<td>89</td>
+<td>88</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1002</td>
+<td>78</td>
+<td>78</td>
+<td>70</td>
+<td>95</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1003</td>
+<td>67</td>
+<td>81</td>
+<td>73</td>
+<td>77</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1004</td>
+<td>87</td>
+<td>60</td>
+<td>76</td>
+<td>68</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1005</td>
+<td>90</td>
+<td>90</td>
+<td>66</td>
+<td>52</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>495</td>
+<td>1496</td>
+<td>95</td>
+<td>65</td>
+<td>79</td>
+<td>56</td>
+</tr>
+<tr>
+<td>496</td>
+<td>1497</td>
+<td>94</td>
+<td>61</td>
+<td>82</td>
+<td>80</td>
+</tr>
+<tr>
+<td>497</td>
+<td>1498</td>
+<td>87</td>
+<td>88</td>
+<td>54</td>
+<td>71</td>
+</tr>
+<tr>
+<td>498</td>
+<td>1499</td>
+<td>59</td>
+<td>87</td>
+<td>99</td>
+<td>63</td>
+</tr>
+<tr>
+<td>499</td>
+<td>1500</td>
+<td>86</td>
+<td>98</td>
+<td>75</td>
+<td>65</td>
+</tr>
+</tbody>
+</table>
+<p>500 rows × 5 columns</p>
+<pre><code>#code
+from IPython.display import HTML,display
+import tabulate
+table=[
+    [&quot;method&quot;]+[x for x in df.columns],
+    [&quot;describe()&quot;]+['&lt;pre&gt;'+str(df[col].describe())+'&lt;/pre&gt;' for col in df.columns],
+    [&quot;count()&quot;]+[df[col].count()for col in df.columns],
+    [&quot;mean()&quot;]+[df[col].mean()for col in df.columns],
+    [&quot;std()&quot;]+[&quot;{:.2f}&quot;.format(df[col].std())for col in df.columns],
+    [&quot;min()&quot;]+[df[col].min() for col in df.columns],
+    [&quot;max()&quot;]+[df[col].max() for col in df.columns],
+    [&quot;q1()&quot;]+[df[col].quantile(0.25)for col in df.columns],
+    [&quot;q2()&quot;]+[df[col].quantile(0.50)for col in df.columns],
+    [&quot;q3()&quot;]+[df[col].quantile(0.75)for col in df.columns],
+    [&quot;skew()&quot;]+[&quot;{:.2f}&quot;.format(df[col].skew()) for col in df.columns],
+]
+
+display(HTML(tabulate.tabulate(table,tablefmt='html')))
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>method</th>
+<th>NOMOR ANTRIAN</th>
+<th>PENYAKIT JANTUNG</th>
+<th>PENYAKIT HATI</th>
+<th>PENYAKIT GINJAL</th>
+<th>PENYAKIT MATA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>describe()</td>
+<td><code>count     500.000000 mean     1250.500000 std       144.481833 min      1001.000000 25%      1125.750000 50%      1250.500000 75%      1375.250000 max      1500.000000 Name: NOMOR ANTRIAN, dtype: float64</code></td>
+<td><code>count    500.000000 mean      75.930000 std       14.534635 min       50.000000 25%       64.000000 50%       77.000000 75%       88.000000 max      100.000000 Name: PENYAKIT JANTUNG, dtype: float64</code></td>
+<td><code>count    500.000000 mean      74.778000 std       14.615606 min       50.000000 25%       62.000000 50%       76.000000 75%       87.000000 max      100.000000 Name: PENYAKIT HATI, dtype: float64</code></td>
+<td><code>count    500.000000 mean      75.184000 std       14.343836 min       50.000000 25%       63.750000 50%       75.000000 75%       87.000000 max      100.000000 Name: PENYAKIT GINJAL, dtype: float64</code></td>
+<td><code>count    500.000000 mean      75.658000 std       14.823242 min       50.000000 25%       63.000000 50%       77.000000 75%       89.000000 max      100.000000 Name: PENYAKIT MATA, dtype: float64</code></td>
+</tr>
+<tr>
+<td>count()</td>
+<td>500</td>
+<td>500</td>
+<td>500</td>
+<td>500</td>
+<td>500</td>
+</tr>
+<tr>
+<td>mean()</td>
+<td>1250.5</td>
+<td>75.93</td>
+<td>74.778</td>
+<td>75.184</td>
+<td>75.658</td>
+</tr>
+<tr>
+<td>std()</td>
+<td>144.48</td>
+<td>14.53</td>
+<td>14.62</td>
+<td>14.34</td>
+<td>14.82</td>
+</tr>
+<tr>
+<td>min()</td>
+<td>1001</td>
+<td>50</td>
+<td>50</td>
+<td>50</td>
+<td>50</td>
+</tr>
+<tr>
+<td>max()</td>
+<td>1500</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr>
+<td>q1()</td>
+<td>1125.75</td>
+<td>64.0</td>
+<td>62.0</td>
+<td>63.75</td>
+<td>63.0</td>
+</tr>
+<tr>
+<td>q2()</td>
+<td>1250.5</td>
+<td>77.0</td>
+<td>76.0</td>
+<td>75.0</td>
+<td>77.0</td>
+</tr>
+<tr>
+<td>q3()</td>
+<td>1375.25</td>
+<td>88.0</td>
+<td>87.0</td>
+<td>87.0</td>
+<td>89.0</td>
+</tr>
+<tr>
+<td>skew()</td>
+<td>0.00</td>
+<td>-0.09</td>
+<td>-0.05</td>
+<td>-0.03</td>
+<td>-0.10</td>
+</tr>
+</tbody>
+</table></div>
         </div>
 
         <footer class="col-md-12">
