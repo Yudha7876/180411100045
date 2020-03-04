@@ -389,7 +389,7 @@
 <blockquote>
 <p>Kesalahan absolut suatu kuantitas adalah nilai absolut dari selisih antara nilai sebenarnya X dan nilai perkiraan x.</p>
 </blockquote>
-<p><img alt="" src="D:\datamining\docs\e2x.png" /></p>
+<p><img alt="" src="../e2x.png" /></p>
 <h4 id="relatif-errors">Relatif Errors<a class="headerlink" href="#relatif-errors" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>Relative error biasa disebut sebagai Kesalahan relatif dari suatu kuantitas adalah rasio kesalahan absolutnya terhadap nilai sebenarnya.</p>
@@ -417,58 +417,58 @@ $$</p>
 <p>atau</p>
 <p><img alt="png" src="https://ditaadita2211.github.io/ditakomnum/Rumus1.png" /></p>
 <p>Contoh:</p>
-<div class="codehilite"><pre><span></span><code>import math
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
 
-x=4
-cek =1
-a = 0
-b=1
-iter = 1
+<span class="n">x</span><span class="o">=</span><span class="mi">4</span>
+<span class="n">cek</span> <span class="o">=</span><span class="mi">1</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">1</span>
+<span class="nb">iter</span> <span class="o">=</span> <span class="mi">1</span>
 
-while cek&gt;0.001:
-    f_x = 0
-    f_y = 0
-    for i in range(a):
-        f_x += (2**i)*x**i/math.factorial(i)
+<span class="k">while</span> <span class="n">cek</span><span class="o">&gt;</span><span class="mf">0.001</span><span class="p">:</span>
+    <span class="n">f_x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">f_y</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+        <span class="n">f_x</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="n">i</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
-    for j in range(b):
-        f_y += (2**j)*x**j/math.factorial(j)
-    cek = f_y-f_x
-    a+=1
-    b+=1
-    print(&quot;iterasi ke-&quot;,iter,&quot;= &quot;,cek)
-    iter+=1
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+        <span class="n">f_y</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">j</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="n">j</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+    <span class="n">cek</span> <span class="o">=</span> <span class="n">f_y</span><span class="o">-</span><span class="n">f_x</span>
+    <span class="n">a</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="n">b</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;iterasi ke-&quot;</span><span class="p">,</span><span class="nb">iter</span><span class="p">,</span><span class="s2">&quot;= &quot;</span><span class="p">,</span><span class="n">cek</span><span class="p">)</span>
+    <span class="nb">iter</span><span class="o">+=</span><span class="mi">1</span>
 </code></pre></div>
 
 
 <p>Output</p>
-<div class="codehilite"><pre><span></span><code>iterasi ke- 1 =  1.0
-iterasi ke- 2 =  8.0
-iterasi ke- 3 =  32.0
-iterasi ke- 4 =  85.33333333333333
-iterasi ke- 5 =  170.66666666666669
-iterasi ke- 6 =  273.0666666666666
-iterasi ke- 7 =  364.08888888888896
-iterasi ke- 8 =  416.1015873015872
-iterasi ke- 9 =  416.1015873015872
-iterasi ke- 10 =  369.8680776014112
-iterasi ke- 11 =  295.89446208112895
-iterasi ke- 12 =  215.195972422639
-iterasi ke- 13 =  143.46398161509296
-iterasi ke- 14 =  88.28552714774924
-iterasi ke- 15 =  50.448872655856576
-iterasi ke- 16 =  26.90606541645684
-iterasi ke- 17 =  13.45303270822842
-iterasi ke- 18 =  6.330838921519444
-iterasi ke- 19 =  2.8137061873417224
-iterasi ke- 20 =  1.184718394670199
-iterasi ke- 21 =  0.47388735786807956
-iterasi ke- 22 =  0.18052851728316455
-iterasi ke- 23 =  0.06564673355751438
-iterasi ke- 24 =  0.022833646454728296
-iterasi ke- 25 =  0.0076112154847578495
-iterasi ke- 26 =  0.0024355889549951826
-iterasi ke- 27 =  0.0007494119863622473
+<div class="codehilite"><pre><span></span><code><span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">1</span> <span class="o">=</span>  <span class="mf">1.0</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">2</span> <span class="o">=</span>  <span class="mf">8.0</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">3</span> <span class="o">=</span>  <span class="mf">32.0</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">4</span> <span class="o">=</span>  <span class="mf">85.33333333333333</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">5</span> <span class="o">=</span>  <span class="mf">170.66666666666669</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">6</span> <span class="o">=</span>  <span class="mf">273.0666666666666</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">7</span> <span class="o">=</span>  <span class="mf">364.08888888888896</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">8</span> <span class="o">=</span>  <span class="mf">416.1015873015872</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">9</span> <span class="o">=</span>  <span class="mf">416.1015873015872</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">10</span> <span class="o">=</span>  <span class="mf">369.8680776014112</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">11</span> <span class="o">=</span>  <span class="mf">295.89446208112895</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">12</span> <span class="o">=</span>  <span class="mf">215.195972422639</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">13</span> <span class="o">=</span>  <span class="mf">143.46398161509296</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">14</span> <span class="o">=</span>  <span class="mf">88.28552714774924</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">15</span> <span class="o">=</span>  <span class="mf">50.448872655856576</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">16</span> <span class="o">=</span>  <span class="mf">26.90606541645684</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">17</span> <span class="o">=</span>  <span class="mf">13.45303270822842</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">18</span> <span class="o">=</span>  <span class="mf">6.330838921519444</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">19</span> <span class="o">=</span>  <span class="mf">2.8137061873417224</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">20</span> <span class="o">=</span>  <span class="mf">1.184718394670199</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">21</span> <span class="o">=</span>  <span class="mf">0.47388735786807956</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">22</span> <span class="o">=</span>  <span class="mf">0.18052851728316455</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">23</span> <span class="o">=</span>  <span class="mf">0.06564673355751438</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">24</span> <span class="o">=</span>  <span class="mf">0.022833646454728296</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">25</span> <span class="o">=</span>  <span class="mf">0.0076112154847578495</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">26</span> <span class="o">=</span>  <span class="mf">0.0024355889549951826</span>
+<span class="n">iterasi</span> <span class="n">ke</span><span class="o">-</span> <span class="mi">27</span> <span class="o">=</span>  <span class="mf">0.0007494119863622473</span>
 </code></pre></div>
 
 
